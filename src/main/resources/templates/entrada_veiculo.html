@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title>Entrada Veículo</title>
+	</head>
+	<body>
+		<form th:action="@/{/veiculo_evento/entrada_placa}" th:object="${veiculo}">
+			Estacionamento Atual: (bla bla tem plate aqui)
+			Placa do Carro entrando: <input type="text" th:field="*{placa}" id="placa_input" placeholder="Name"> <input type="submit" value="Vai cachorra"> 
+		</form>
+	</body>
+</body>
