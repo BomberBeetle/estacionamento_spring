@@ -1,6 +1,7 @@
 package com.javalet.estacionamento.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,10 @@ public class EstacionamentoController{
 	@GetMapping("/getAll")
 	public Iterable<Estacionamento> getAll(){
 		return repository.findAll();
+	}
+
+	public Optional<Estacionamento> findById(Integer id){
+		return repository.findById(id);
 	}
 
 	@GetMapping("/testEst")

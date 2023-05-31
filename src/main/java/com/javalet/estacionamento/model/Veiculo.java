@@ -38,4 +38,12 @@ public class Veiculo {
 	
 	@Enumerated(EnumType.STRING)
 	private TipoVeiculo tipo;
+
+	public void setEstacionamento(Estacionamento e){
+		this.estacionamento = e;
+	}
+
+	public Integer getId(){
+		return this.id;
+	}
 }
