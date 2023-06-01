@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>criar veiculo</title>
+	</head>
+	<body>
+		<form th:object=${veiculo} th:action="@{/post_create_veiculo}" method="post">
+			<label for="placa">Placa</label>
+			<input th:field="*{placa}" type="text" id="placa" placeholder="Placa"/>
+			<label for="cor">Cor</label>
+			<input th:field="*{cor}" type="text" id="cor" placeholder="Cor"/>
+			<label for="modelo">Modelo</label>
+			<input  th:field="*{modelo}" type="text" id="modelo"/>
+			<input type="submit" value="Registrar"/>
+			<input type="hidden" th:value="${entry_event}" th:name="entry_event">
+		</form>
+		
+	</body>
+</html>

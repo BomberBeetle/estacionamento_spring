@@ -33,3 +33,4 @@ public class VeiculoController{
 		veiculoRepository.save(vei);
 	}
 }
+

@@ -49,4 +49,17 @@ public class EventoVeiculo {
 	public TipoEventoVeiculo getTipoEvento(){
 		return this.tipo_evento;
 	}
+
+	public void setVeiculo(Veiculo veiculo) {
+	this.veiculo = veiculo;
+	}
+
+	public void setTipo_evento(TipoEventoVeiculo tipo_evento) {
+	this.tipo_evento = tipo_evento;
+	}
+
+	public void setEstacionamento(Estacionamento estacionamento) {
+	this.estacionamento = estacionamento;
+	}
+
 }

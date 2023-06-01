@@ -46,4 +46,54 @@ public class Veiculo {
 	public Integer getId(){
 		return this.id;
 	}
+
+	public String getPlaca(){
+		return this.placa;
+	}
+
+	public String getCor() {
+	return cor;
+	}
+
+	public String getModelo() {
+	return modelo;
+	}
+	
+	public Usuario getCliente() {
+	return cliente;
+	}
+
+	public TipoVeiculo getTipo() {
+	return tipo;
+	}
+
+	public Estacionamento getEstacionamento() {
+	return estacionamento;
+	}
+
+	public void setId(Integer id) {
+	this.id = id;
+	}
+
+	public void setCor(String cor) {
+	this.cor = cor;
+	}
+
+	public void setPlaca(String placa) {
+	this.placa = placa;
+	}
+
+	public void setModelo(String modelo) {
+	this.modelo = modelo;
+	}
+	
+	public void setTipo(TipoVeiculo tipo) {
+	this.tipo = tipo;
+	}
+
+	public void setCliente(Usuario cliente) {
+	this.cliente = cliente;
+	}
+	
+	
 }
