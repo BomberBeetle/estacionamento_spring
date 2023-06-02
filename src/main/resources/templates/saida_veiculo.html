@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Saída Veículo</title>
+	</head>
+	<body>
+		<span th:if="${veiculo_not_found != null}">
+			ei ei nao achei essa placa
+		</span>
+		<form th:action="@{/saida_placa}" method="post">
+			Estacionamento Atual: <span th:text="${estacionamento.nome}"> </span><br/>
+			Placa do Veículo saindo: <input type="text" th:name="placa" id="placa" placeholder="Placa"/> <input type="submit" value="Registrar"/> 
+		</form>
+		
+	</body>
+</body>
