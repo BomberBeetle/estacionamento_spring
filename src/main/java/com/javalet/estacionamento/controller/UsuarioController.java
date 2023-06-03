@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,6 +32,9 @@ public class UsuarioController{
 		
 		Cookie userid = new Cookie("usuario_id", "1");
 		Cookie estacionamentoid = new Cookie("estacionamento_id", "1");
+
+		userid.setPath("/");
+		estacionamentoid.setPath("/");
 		
 		response.addCookie(userid);
 		response.addCookie(estacionamentoid);
@@ -38,15 +42,19 @@ public class UsuarioController{
 		return new ResponseEntity<>("owo whats this? *notices your usuario_id cookie*", HttpStatus.OK);
 	}
 
-	@GetMapping("/owogin")
-	public ResponseEntity<?> login(HttpServletResponse response){
+	@GetMapping("/lagin/{id_usuario}")
+	public ResponseEntity<?> login(@PathVariable Integer id_usuario,HttpServletResponse response){
 		
-		Cookie userid = new Cookie("usuario_id", "1");
+		Cookie userid = new Cookie("usuario_id", id_usuario.toString());
 		Cookie estacionamentoid = new Cookie("estacionamento_id", "1");
+
+		userid.setPath("/");
+		estacionamentoid.setPath("/");
+
 		
 		response.addCookie(userid);
 		response.addCookie(estacionamentoid);
 
-		return new ResponseEntity<>("owo whats this? *notices your usuario_id cookie*", HttpStatus.OK);
+		return new ResponseEntity<>("login com usuario_id ("+id_usuario.toString()+") no cookie ", HttpStatus.OK);
 	}
 }

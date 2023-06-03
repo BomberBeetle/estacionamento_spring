@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Gerenciar Taxas</title>
+		<script th:src="@{gerenciar_taxas.js}" type="text/javascript"></script>
+	</head>
+	<form th:object="${estacionamento}" th:action="@{/update_estacionamento}" method="post">
+		<select onchange="estacionamentoDropdownChanged()" th:field="*{id}" id="estacionamento_selector">
+			<option th:each="est: ${estacionamentos}"
+			th:value="${est.id}"
+			th:text="${est.nome}"
+			></option>
+		</select>
+		<label for="taxa_base">Taxa de Entrada</label>
+		<input id="taxa_base" th:field="*{taxa_base}" name="taxa_base"/>
+	
+		<label for="taxa_horaria">Taxa Horária</label>
+		<input id="taxa_horaria" th:field="*{taxa_horaria}" name="taxa_horaria"/>
+
+		<label for"taxa_diaria">Taxa Mensal</label>
+		<input id="taxa_diaria" th:field="*{taxa_diaria}" name="taxa_diaria"/>
+
+		<label for="taxa_semanal">Taxa Semanal</label>
+		<input id="taxa_semanal" th:field="*{taxa_semanal}" name="taxa_semanal"/>
+
+		<label for="taxa_mensal">Taxa mensal</label>
+		<input id="taxa_mensal" th:field="*{taxa_mensal}" name="taxa_mensal"/>
+		<input type="submit" value="Atualizar"/>
+	</form>
+	<span style='color: "lime";' th:if="${updateSuccess} != null" th:text="${'Taxas para ' + estacionamento.nome + ' atualizadas com sucesso.'}"></span>
+</html>
