@@ -1,0 +1,19 @@
+Valor a pagar: R$ <span th:if="${money != null}" th:text="${money}"></span>
+
+
+Tipo de pagarmento:
+
+<form th:object="${veiculo}" th:action="@{/saida_pagamento_efetuado}" method="get">
+	<select>
+		<option>Crédito</option>
+		<option>Débito</option>
+		<option>Dinheiro</option>
+	</select>
+
+	<input type="hidden" value=${veiculo.id} th:field="*{id}"/>
+
+	<input type="submit" value="Efetuar pagamento"/>
+</form>
+
+
+

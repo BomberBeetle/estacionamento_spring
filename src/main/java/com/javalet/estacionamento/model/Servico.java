@@ -26,7 +26,7 @@ public class Servico {
 	Estacionamento estacionamento;
      
 	@ManyToOne
-	Usuario cliente;
+	Veiculo veiculo;
      
     	@Enumerated(EnumType.STRING)
     	TipoServico tipo_servico;

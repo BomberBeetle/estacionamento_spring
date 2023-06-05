@@ -27,7 +27,6 @@ import com.javalet.estacionamento.model.enums.TipoUsuario;
 import com.javalet.estacionamento.model.repositories.EventoVeiculoRepository;
 
 @Controller
-@RequestMapping(path="/veiculo_evento")
 public class EventoVeiculoController{
 		
 	@Autowired
@@ -45,11 +44,13 @@ public class EventoVeiculoController{
 	@GetMapping
 	public List<EventoVeiculo> getEstacionamentoEventos(@PathVariable Integer estacionamentoID){
 		return eventosRepository.findByEstacionamento_Id(estacionamentoID);
-
+	
 	}
 
-@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
+	public Optional<EventoVeiculo> getLatestEvent(Integer veiculo_id){
+		return eventosRepository.findFirstByVeiculo_IdOrderByDatahoraDesc(veiculo_id);
+	}
+	
 	public EventoVeiculo create(@RequestBody EventoVeiculo evento){
 		EventoVeiculo savedEvento = eventosRepository.save(evento);
 		if(savedEvento.getTipoEvento() == TipoEventoVeiculo.ENTRADA) veiculoController.updateEstacionamento(savedEvento.getVeiculo(), savedEvento.getEstacionamento());	

@@ -1,11 +1,15 @@
 package com.javalet.estacionamento.controller;
 
+import java.sql.Timestamp;
 import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +34,9 @@ public class SaidaController{
 
 	@Autowired
 	EventoVeiculoController eventoVeiculoController;
+
+	@Autowired
+	ServicoController servicoController;
 	
 	@GetMapping("/saida")
 	public ModelAndView saida(@CookieValue Integer usuario_id , @CookieValue Integer estacionamento_id){
@@ -56,16 +63,37 @@ public class SaidaController{
 	public ModelAndView saida_placa(@CookieValue Integer estacionamento_id, @CookieValue Integer usuario_id, @RequestParam(value = "placa") String placa){
 		ModelAndView model = new ModelAndView();
 		Optional<Veiculo> vei_maybe = veiculoController.findByPlaca(placa);
-		if(vei_maybe.isPresent()){
+		if(vei_maybe.isPresent()){	
+
 			Estacionamento est = estacionamentoController.findById(estacionamento_id).orElseThrow();
 			Veiculo v = vei_maybe.get();
-			EventoVeiculo ev = new EventoVeiculo();
-			ev.setVeiculo(v);
-			ev.setTipo_evento(TipoEventoVeiculo.SAIDA);
-			ev.setEstacionamento(est);
-			eventoVeiculoController.create(ev);
-			model.setViewName("saida_success");
-			return model;
+
+			if(servicoController.findActiveServicesByVeiculo(v).iterator().hasNext()){ 
+				
+				EventoVeiculo ev = new EventoVeiculo();
+				ev.setVeiculo(v);
+				ev.setTipo_evento(TipoEventoVeiculo.SAIDA);
+				ev.setEstacionamento(est);
+				eventoVeiculoController.create(ev);
+				model.setViewName("saida_success");
+				return model;
+			}
+			else{
+				Optional<EventoVeiculo> ultimoEvento = eventoVeiculoController.getLatestEvent(v.getId());
+				if(ultimoEvento.isPresent()){
+					EventoVeiculo uev = ultimoEvento.get();
+					System.out.println(uev.getTipoEvento());
+					System.out.println(uev.getDatahora());
+					if(uev.getTipoEvento() == TipoEventoVeiculo.ENTRADA){
+						model.addObject("money", est.getTaxa_base() + est.getTaxa_horaria()*ChronoUnit.HOURS.between(LocalDateTime.now(), uev.getDatahora().toLocalDateTime()));
+					}
+				}
+
+				model.setViewName("pagto_saida");
+				model.addObject("estacionamento", est);
+				model.addObject("veiculo", v);
+				return model;
+			}
 		}
 		else
 		{
@@ -77,5 +105,21 @@ public class SaidaController{
 
 		}
 	
+	}
+
+	@GetMapping("/saida_pagamento_efetuado")
+	public ModelAndView saidaPagamentoEfetuado (@ModelAttribute Veiculo veiculo, @CookieValue Integer estacionamento_id){
+		
+		ModelAndView model = new ModelAndView();
+		Veiculo v = veiculoController.findById(veiculo.getId()).orElseThrow();
+		Estacionamento est = estacionamentoController.findById(estacionamento_id).orElseThrow();
+		EventoVeiculo ev = new EventoVeiculo();
+		ev.setVeiculo(v);
+		ev.setTipo_evento(TipoEventoVeiculo.SAIDA);
+		ev.setEstacionamento(est);
+		eventoVeiculoController.create(ev);
+		model.setViewName("saida_success");
+		return model;	
+
 	}
 }

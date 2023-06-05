@@ -62,4 +62,8 @@ public class EventoVeiculo {
 	this.estacionamento = estacionamento;
 	}
 
+
+	public Timestamp getDatahora(){
+		return this.datahora;
+	}
 }
