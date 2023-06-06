@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.javalet.estacionamento.model.Estacionamento;
 import com.javalet.estacionamento.model.Usuario;
 import com.javalet.estacionamento.model.Veiculo;
+import com.javalet.estacionamento.model.Servico;
 
 @Controller
 public class ServicoClienteController{
@@ -42,6 +43,8 @@ public class ServicoClienteController{
 
 		model.addObject("estacionamentos", estacionamentos);
 		if(!veics_user.isEmpty())model.addObject("veiculos", veics_user);
+
+		model.addObject("servico", new Servico());
 
 		model.setViewName("registrar_servico");
 		return model;

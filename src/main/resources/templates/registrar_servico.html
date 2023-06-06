@@ -1,23 +1,29 @@
+<form th:object="${servico}" th:action="@{/servico_post}" method="post">
+
 Tipo de Servico:
-<select>
-	<option>Horária</option>
-	<option>Diária</option>
-	<option>Semanal</option>
-	<option>Mensal</option>
+<select th:field="*{tipo_servico}">
+	<option th:value="HORARIA">Horária</option>
+	<option th:value="DIARIA">Diária</option>
+	<option th:value="SEMANAL">Semanal</option>
+	<option th:value="MENSAL">Mensal</option>
 </select>
 
 Estacionamento:
 
-<select>
+<select th:field="*{estacionamento.id}">
 	<option th:each="est: ${estacionamentos}" th:text="${est.nome}" th:value="${est.id}"></option>
 </select>
 
 Veículo:
 <span th:if="${veiculos != null}">
-<select>
+<select th:field="*{veiculo.id}">
 	<option th:each="vei: ${veiculos}" th:text="${vei.modelo + ' (' + vei.cor +')'}" th:value="${vei.id}"></option>
 </select> 
 ou
 </span>
 
-<button><a th:href="@{/registrar_veiculo}">Registrar Novo Veículo</a></button>
+<a th:href="@{/registrar_veiculo}"><button>Registrar Novo Veículo</button></a>
+
+<input type="submit" value="Requisitar Serviço e Proceder ao Pagamento"/>
+
+</form>

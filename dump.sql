@@ -1,25 +1,3 @@
--- MariaDB dump 10.19  Distrib 10.11.2-MariaDB, for Linux (x86_64)
---
--- Host: localhost    Database: javalet
--- ------------------------------------------------------
--- Server version	8.0.33
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `estacionamento`
---
-
-DROP TABLE IF EXISTS `estacionamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estacionamento` (
@@ -34,24 +12,9 @@ CREATE TABLE `estacionamento` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estacionamento`
---
-
-LOCK TABLES `estacionamento` WRITE;
-/*!40000 ALTER TABLE `estacionamento` DISABLE KEYS */;
 INSERT INTO `estacionamento` VALUES
 (50,1,'Javalet Salto',5,50,10,800,300),
 (35,2,'Javalet Indaiatuba',4,40,7.5,700,250);
-/*!40000 ALTER TABLE `estacionamento` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estacionamento_eventos`
---
-
-DROP TABLE IF EXISTS `estacionamento_eventos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estacionamento_eventos` (
@@ -63,21 +26,6 @@ CREATE TABLE `estacionamento_eventos` (
   CONSTRAINT `FKoexo7hir4ou6d6oimmen0v77v` FOREIGN KEY (`estacionamento_id`) REFERENCES `estacionamento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estacionamento_eventos`
---
-
-LOCK TABLES `estacionamento_eventos` WRITE;
-/*!40000 ALTER TABLE `estacionamento_eventos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estacionamento_eventos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estacionamento_servicos`
---
-
-DROP TABLE IF EXISTS `estacionamento_servicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estacionamento_servicos` (
@@ -89,21 +37,6 @@ CREATE TABLE `estacionamento_servicos` (
   CONSTRAINT `FKmj0w3v2seqi60ru5nwwyb7slk` FOREIGN KEY (`estacionamento_id`) REFERENCES `estacionamento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estacionamento_servicos`
---
-
-LOCK TABLES `estacionamento_servicos` WRITE;
-/*!40000 ALTER TABLE `estacionamento_servicos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estacionamento_servicos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `estacionamento_veiculos`
---
-
-DROP TABLE IF EXISTS `estacionamento_veiculos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estacionamento_veiculos` (
@@ -115,21 +48,6 @@ CREATE TABLE `estacionamento_veiculos` (
   CONSTRAINT `FK74ghiunhydy3y5gd9vqjfbqfg` FOREIGN KEY (`estacionamento_id`) REFERENCES `estacionamento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `estacionamento_veiculos`
---
-
-LOCK TABLES `estacionamento_veiculos` WRITE;
-/*!40000 ALTER TABLE `estacionamento_veiculos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `estacionamento_veiculos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `evento_veiculo`
---
-
-DROP TABLE IF EXISTS `evento_veiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `evento_veiculo` (
@@ -145,44 +63,14 @@ CREATE TABLE `evento_veiculo` (
   CONSTRAINT `FKmc4ng4k1qc1n4nk4449744js6` FOREIGN KEY (`estacionamento_id`) REFERENCES `estacionamento` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `evento_veiculo`
---
-
-LOCK TABLES `evento_veiculo` WRITE;
-/*!40000 ALTER TABLE `evento_veiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `evento_veiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `evento_veiculo_seq`
---
-
-DROP TABLE IF EXISTS `evento_veiculo_seq`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `evento_veiculo_seq` (
   `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `evento_veiculo_seq`
---
-
-LOCK TABLES `evento_veiculo_seq` WRITE;
-/*!40000 ALTER TABLE `evento_veiculo_seq` DISABLE KEYS */;
 INSERT INTO `evento_veiculo_seq` VALUES
 (1);
-/*!40000 ALTER TABLE `evento_veiculo_seq` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `servico`
---
-
-DROP TABLE IF EXISTS `servico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `servico` (
@@ -199,44 +87,14 @@ CREATE TABLE `servico` (
   CONSTRAINT `FKry9tnp4qo72bc4xkrt73a2asg` FOREIGN KEY (`veiculo_id`) REFERENCES `veiculo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `servico`
---
-
-LOCK TABLES `servico` WRITE;
-/*!40000 ALTER TABLE `servico` DISABLE KEYS */;
-/*!40000 ALTER TABLE `servico` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `servico_seq`
---
-
-DROP TABLE IF EXISTS `servico_seq`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `servico_seq` (
   `next_val` bigint DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `servico_seq`
---
-
-LOCK TABLES `servico_seq` WRITE;
-/*!40000 ALTER TABLE `servico_seq` DISABLE KEYS */;
 INSERT INTO `servico_seq` VALUES
 (1);
-/*!40000 ALTER TABLE `servico_seq` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario`
---
-
-DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
@@ -251,25 +109,10 @@ CREATE TABLE `usuario` (
   UNIQUE KEY `UK_5171l57faosmj8myawaucatdw` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario`
---
-
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` VALUES
 ('111.111.111-11','porteiro@javalet.com',1,'Poeur Teiro','senha','PORTEIRO'),
-('222.222.222-22','diretor@javalet.com',2,'DirÃª Torr','senha','DIRETOR'),
+('222.222.222-22','diretor@javalet.com',2,'Dirê Torr','senha','DIRETOR'),
 ('333.333.333-33','cliente@email.com',3,'Cli Enti','senha','CLIENTE');
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario_servicos`
---
-
-DROP TABLE IF EXISTS `usuario_servicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario_servicos` (
@@ -281,21 +124,6 @@ CREATE TABLE `usuario_servicos` (
   CONSTRAINT `FKmi42r8pmautg63j2kv6rdkd5u` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario_servicos`
---
-
-LOCK TABLES `usuario_servicos` WRITE;
-/*!40000 ALTER TABLE `usuario_servicos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario_servicos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuario_veiculos`
---
-
-DROP TABLE IF EXISTS `usuario_veiculos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario_veiculos` (
@@ -307,21 +135,6 @@ CREATE TABLE `usuario_veiculos` (
   CONSTRAINT `FKgctdd44o80uj769t8wmtqvs02` FOREIGN KEY (`veiculos_id`) REFERENCES `veiculo` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuario_veiculos`
---
-
-LOCK TABLES `usuario_veiculos` WRITE;
-/*!40000 ALTER TABLE `usuario_veiculos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuario_veiculos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `veiculo`
---
-
-DROP TABLE IF EXISTS `veiculo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `veiculo` (
@@ -337,25 +150,8 @@ CREATE TABLE `veiculo` (
   KEY `FKqkkwxg7dh25pytuju4fscc8s4` (`estacionamento_id`),
   CONSTRAINT `FKepidt6ge9jf6907k1dd2w0k0k` FOREIGN KEY (`cliente_id`) REFERENCES `usuario` (`id`),
   CONSTRAINT `FKqkkwxg7dh25pytuju4fscc8s4` FOREIGN KEY (`estacionamento_id`) REFERENCES `estacionamento` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `veiculo`
---
-
-LOCK TABLES `veiculo` WRITE;
-/*!40000 ALTER TABLE `veiculo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `veiculo` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2023-06-06  9:26:06
+INSERT INTO `veiculo` VALUES
+(3,'Vermelho',NULL,1,'Toyota Prius','TST5000','CARRO'),
+(3,'Amarelo',NULL,2,'Beetle','ESK3001','CARRO');

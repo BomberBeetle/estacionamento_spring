@@ -4,20 +4,27 @@
 	</head>
 	<body>
 		<form th:object=${veiculo} th:action="@{/post_create_veiculo}" method="post">
-			<label for="placa">Placa</label>
-			<input th:field="*{placa}" type="text" id="placa" placeholder="Placa"/>
+		   <div class="mb-3">
+			<label for="placa" class="form-label">Placa</label>
+			<input th:field="*{placa}" type="text" id="placa" placeholder="Placa" aria-describedby="placaHelp"/>
+			<div id="emailHelp" class="form-text"> Não compartilharemos a sua placa com ninguém.</div>
+			</div>
+			<div class="mb-3">
 			<label for="cor">Cor</label>
 			<input th:field="*{cor}" type="text" id="cor" placeholder="Cor"/>
+			</div>
+			<div class="mb-3">
 			<label for="modelo">Modelo</label>
 			<input  th:field="*{modelo}" type="text" id="modelo"/>
 			<label for="tipo">Tipo de Veículo</label>
-			<select th:field="*{tipo}" id="tipo">
+			<select th:field="*{tipo}"  id="tipo">
 				<option th:value="CARRO">Carro</option>
 				<option th:value="MOTO">Moto</option>
 				<option th:value="CAMINHAO">Caminhão</option>
 			</select>
-			<input type="submit" value="Registrar"/>	
+			<input type="submit" value="Registrar"/>
 			<input type="hidden" th:value="${entry_event}" th:name="entry_event">
+			</div>
 		</form>
 		
 	</body>
