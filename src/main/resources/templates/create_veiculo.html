@@ -10,7 +10,13 @@
 			<input th:field="*{cor}" type="text" id="cor" placeholder="Cor"/>
 			<label for="modelo">Modelo</label>
 			<input  th:field="*{modelo}" type="text" id="modelo"/>
-			<input type="submit" value="Registrar"/>
+			<label for="tipo">Tipo de Veículo</label>
+			<select th:field="*{tipo}" id="tipo">
+				<option th:value="CARRO">Carro</option>
+				<option th:value="MOTO">Moto</option>
+				<option th:value="CAMINHAO">Caminhão</option>
+			</select>
+			<input type="submit" value="Registrar"/>	
 			<input type="hidden" th:value="${entry_event}" th:name="entry_event">
 		</form>
 		

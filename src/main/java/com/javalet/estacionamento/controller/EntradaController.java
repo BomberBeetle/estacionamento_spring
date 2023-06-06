@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.javalet.estacionamento.model.Estacionamento;
 import com.javalet.estacionamento.model.EventoVeiculo;
+import com.javalet.estacionamento.model.Usuario;
 import com.javalet.estacionamento.model.Veiculo;
 import com.javalet.estacionamento.model.enums.TipoEventoVeiculo;
 import com.javalet.estacionamento.model.enums.TipoUsuario;
@@ -40,13 +39,14 @@ public class EntradaController{
 
 		@PostMapping("/post_create_veiculo")
 	public String postCreateVeiculo(@CookieValue Integer estacionamento_id, @CookieValue Integer usuario_id, @ModelAttribute("veiculo") @Valid Veiculo veiculo, @RequestParam(value = "entry_event") String entryEvent, BindingResult result, Model model){
+		Usuario user = usuarioController.findById(usuario_id).orElseThrow();
 		if(result.hasErrors()){
 			return "create_veiculo";
 		}
 		else{
 
-			Veiculo new_vei = veiculoController.create(veiculo);
-			if(entryEvent.equals("true")){
+			if(entryEvent.equals("true") && user.getTipo() == TipoUsuario.PORTEIRO){
+				Veiculo new_vei = veiculoController.create(veiculo);		
 				Estacionamento est = estacionamentoController.findById(estacionamento_id).orElseThrow();
 				EventoVeiculo ev = new EventoVeiculo();
 				ev.setVeiculo(new_vei);
@@ -55,8 +55,14 @@ public class EntradaController{
 				eventoVeiculoController.create(ev);
 				return "entrada_success";
 			}
+			else if(user.getTipo() == TipoUsuario.CLIENTE){
+				veiculo.setCliente(user);
+				veiculoController.create(veiculo);
+				return "redirect:/registrar_servico";
+
+			}
+			return "redirect:/";
 		}
-		return "index";
 	}
 	
 	@GetMapping("/entrada")

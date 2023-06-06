@@ -32,7 +32,7 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id_usuario;
+	int id;
 	
 	@Enumerated(EnumType.STRING)
 	TipoUsuario tipo;
@@ -76,11 +76,11 @@ public class Usuario {
 	}
 
 	public int getId_usuario() {
-		return id_usuario;
+		return id;
 	}
 
-	public void setId_usuario(int id_usuario) {
-		this.id_usuario = id_usuario;
+	public void setId_usuario(int id) {
+		this.id = id;
 	}
 
 	public TipoUsuario getTipo() {

@@ -50,4 +50,8 @@ public class EstacionamentoController{
 		est.setTaxa_mensal(e.getTaxa_mensal());
 		return save(est);
 	}
+
+	public Iterable<Estacionamento> findAll(){
+		return repository.findAll();
+	}
 }

@@ -1,0 +1,23 @@
+Tipo de Servico:
+<select>
+	<option>Horária</option>
+	<option>Diária</option>
+	<option>Semanal</option>
+	<option>Mensal</option>
+</select>
+
+Estacionamento:
+
+<select>
+	<option th:each="est: ${estacionamentos}" th:text="${est.nome}" th:value="${est.id}"></option>
+</select>
+
+Veículo:
+<span th:if="${veiculos != null}">
+<select>
+	<option th:each="vei: ${veiculos}" th:text="${vei.modelo + ' (' + vei.cor +')'}" th:value="${vei.id}"></option>
+</select> 
+ou
+</span>
+
+<button><a th:href="@{/registrar_veiculo}">Registrar Novo Veículo</a></button>
