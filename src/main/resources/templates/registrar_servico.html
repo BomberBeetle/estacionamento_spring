@@ -1,29 +1,46 @@
+<html>
+
+<head>
+	<title>Agendar Serviço</title>
+	<script th:src="@{registrar_servico.js}" type="text/javascript"></script>
+</head>
+
+
+<body>
 <form th:object="${servico}" th:action="@{/servico_post}" method="post">
 
-Tipo de Servico:
-<select th:field="*{tipo_servico}">
-	<option th:value="HORARIA">Horária</option>
-	<option th:value="DIARIA">Diária</option>
-	<option th:value="SEMANAL">Semanal</option>
-	<option th:value="MENSAL">Mensal</option>
-</select>
+	Tipo de Servico:
+	<select th:field="*{tipo_servico}" id="tipo_servico" onchange="changeTipoServico()">
+		<option th:value="HORARIA">Horária</option>
+		<option th:value="DIARIA">Diária</option>
+		<option th:value="SEMANAL">Semanal</option>
+		<option th:value="MENSAL">Mensal</option>
+	</select>
 
-Estacionamento:
+	Estacionamento:
 
-<select th:field="*{estacionamento.id}">
-	<option th:each="est: ${estacionamentos}" th:text="${est.nome}" th:value="${est.id}"></option>
-</select>
+	<select th:field="*{estacionamento.id}">
+		<option th:each="est: ${estacionamentos}" th:text="${est.nome}" th:value="${est.id}"></option>
+	</select>
 
-Veículo:
-<span th:if="${veiculos != null}">
-<select th:field="*{veiculo.id}">
-	<option th:each="vei: ${veiculos}" th:text="${vei.modelo + ' (' + vei.cor +')'}" th:value="${vei.id}"></option>
-</select> 
-ou
-</span>
+	Veículo:
+	<span th:if="${veiculos != null}">
+	<select th:field="*{veiculo.id}">
+		<option th:each="vei: ${veiculos}" th:text="${vei.modelo + ' (' + vei.cor +')'}" th:value="${vei.id}"></option>
+	</select> 
+	ou
+	</span>
+	<a th:href="@{/registrar_veiculo}"><button>Registrar Novo Veículo</button></a>
 
-<a th:href="@{/registrar_veiculo}"><button>Registrar Novo Veículo</button></a>
+	Data e Hora de Início:
+	<input type="datetime-local" th:field="*{inicio}" id="data_inicio"/>
+	
+	Duração
+	<input id="time_units" type="number" step="1" value="1" th:name="tempo"/>
+	<span id="time_unit"></span>	
 
-<input type="submit" value="Requisitar Serviço e Proceder ao Pagamento"/>
+	<input type="submit" value="Requisitar Serviço e Proceder ao Pagamento"/>
 
 </form>
+</body>
+</html>

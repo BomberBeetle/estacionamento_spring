@@ -1,0 +1,24 @@
+Valor a pagar: R$ <span th:if="${money != null}" th:text="${money}"></span>
+
+
+Tipo de pagamento:
+
+<form th:object="${servico}" th:action="@{/servico_pagamento_efetuado}" method="post">
+	<select>
+		<option>Crédito</option>
+		<option>Débito</option>
+		<option>Pix</option>
+		<option>Boleto</option>
+	</select>
+
+	<input type="hidden" value=${servico.inicio} th:field="*{inicio}"/>
+	<input type="hidden" value=${servico.fim} th:field="*{fim}"/>
+	<input type="hidden" value=${servico.veiculo.id} th:field="*{veiculo.id}"/>
+	<input type="hidden" value=${servico.estacionamento.id} th:field="*{estacionamento.id}"/>
+	<input type="hidden" value=${servico.tipo_servico} th:field="*{tipo_servico}"/>
+
+	<input type="submit" value="Efetuar pagamento"/>
+</form>
+
+
+

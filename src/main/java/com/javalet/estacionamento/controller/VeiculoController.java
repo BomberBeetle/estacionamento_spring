@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.javalet.estacionamento.model.Estacionamento;
-import com.javalet.estacionamento.model.Servico;
 import com.javalet.estacionamento.model.Usuario;
 import com.javalet.estacionamento.model.Veiculo;
 import com.javalet.estacionamento.model.repositories.VeiculoRepository;

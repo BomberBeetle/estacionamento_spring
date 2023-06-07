@@ -1,7 +1,7 @@
 Valor a pagar: R$ <span th:if="${money != null}" th:text="${money}"></span>
 
 
-Tipo de pagarmento:
+Tipo de pagamento:
 
 <form th:object="${veiculo}" th:action="@{/saida_pagamento_efetuado}" method="get">
 	<select>
