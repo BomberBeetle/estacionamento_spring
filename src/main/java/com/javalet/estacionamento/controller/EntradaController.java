@@ -74,9 +74,9 @@ public class EntradaController{
 				model.addAttribute("estacionamento", est.get());
 				return "entrada_veiculo";
 			}
-			else return "redirect:/index";
+			else return "redirect:/";
 		};
-		return "redirect:/index";
+		return "redirect:/";
 	}
 	@PostMapping("/entrada_placa")
 	public String entradaPlaca(@CookieValue Integer estacionamento_id, @CookieValue Integer usuario_id, @RequestParam(value = "placa") String placa, Model model){

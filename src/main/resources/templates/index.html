@@ -46,19 +46,25 @@
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+		<div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+			    <li class="nav-item" th:if="${usuario.id == null}">
                             <a class="nav-link" href="/login">Login</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link" href="/cadastro">Cadastro de Veículos</a>
+			<li class="nav-item" th:if="${usuario.id == null}"> 
+                            <a class="nav-link" href="/cadastro">Cadastrar Conta</a>
                         </li>
-                        <li class="nav-item">
+			<li class="nav-item" th:if="${usuario.tipo.name() == 'PORTEIRO'}">
                             <a class="nav-link" href="/entrada">Entrada de veículos</a>
                         </li>
-                        <li class="nav-item">
+			<li class="nav-item" th:if="${usuario.tipo.name() == 'PORTEIRO'}">
                             <a class="nav-link" href="/saida">Saída de veículos</a>
+                        </li>
+			<li class="nav-item" th:if="${usuario.tipo.name() == 'DIRETOR'}">
+                            <a class="nav-link" href="/gerenciar_taxas">Gerenciar Taxas</a>
+                        </li>
+			<li class="nav-item" th:if="${usuario.tipo.name() == 'CLIENTE'}">
+                            <a class="nav-link" href="/registrar_servico">Agendar Serviço</a>
                         </li>
                     </ul>
                     <button id="theme-toggle" class="btn btn-link  fa-solid fa-circle-half-stroke" onclick="toggleTheme()">Alterar tema</button>

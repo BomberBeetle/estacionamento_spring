@@ -17,18 +17,18 @@
         </nav>
     </header>
 
-<form>
-  <div class="mb-3">
+    <form th:object="${user}" th:action="@{/post_login}" method="post">
+  <div class="mb-3" >
     <p>
     <label for="exampleInputEmail1" class="form-label">E-mail</label>
-    <input type="email" class="form-control" id="exampleInputEmail1">
+    <input type="email" class="form-control" th:field="*{email}" id="exampleInputEmail1">
     </p>
     </div>
   </div>
   <div class="mb-3">
   <p>
     <label for="exampleInputPassword1" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" class="form-control" th:field="*{senha}" id="exampleInputPassword1">
     </p>
   </div>
   <div class="mb-3 form-check">

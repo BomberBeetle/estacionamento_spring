@@ -26,19 +26,9 @@ public class UsuarioController{
 		return usuarioRepository.findById(id);
 	}
 	
-	@GetMapping("/login")
-	public ResponseEntity<?> login(@RequestBody String password, @RequestBody String login, HttpServletResponse response){
+	public Optional<Usuario> login(String email, String senha){
 		
-		Cookie userid = new Cookie("usuario_id", "1");
-		Cookie estacionamentoid = new Cookie("estacionamento_id", "1");
-
-		userid.setPath("/");
-		estacionamentoid.setPath("/");
-		
-		response.addCookie(userid);
-		response.addCookie(estacionamentoid);
-
-		return new ResponseEntity<>("owo whats this? *notices your usuario_id cookie*", HttpStatus.OK);
+		return usuarioRepository.findByEmailAndSenha(email, senha);
 	}
 
 	@GetMapping("/lagin/{id_usuario}")
