@@ -4,12 +4,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	<head>
 		<title><mark>Entrada</mark> de Veículo</title>
-		<small class="text-muted">JaValet</small>
+	
 	</head>
 	
 	<style>
     body{
-    	background-color: #f2f2f2;
+    	background-color: #6b6b69;
     	color: #333333;
     	font-family: Arial, sans-serif;
     }
@@ -21,10 +21,6 @@
     	font-family: Arial, sans-serif;
     }
     
-    .dark-theme{
-    		background-color: #202124;
-    		color:#ffffff;
-    }
     
     nav{
        background-color: #ffc52b;
@@ -44,22 +40,27 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                 
-                    <button id="theme-toggle" class="btn btn-link  fa-solid fa-circle-half-stroke" onclick="toggleTheme()">Alterar tema</button>
+                   
                 </div>
             </div>
         </nav>
     </header>
+        <br/>
+        
+        <div class="container" alignt="center">
+        <div>
 		<form th:action="@{/entrada_placa}" method="post">
-			Estacionamento Atual: <span th:text="${estacionamento.nome}"> </span><br/>
-			Placa do Veículo entrando: <input type="text" th:name="placa" id="placa" placeholder="Placa"/> <input type="submit" class="btn btn-warning" value="Registrar"/> 
+			 <p class="text-light">Estacionamento Atual: </p> 
+			 <span th:text="${estacionamento.nome}"> </span><br/>
+			 <p class="text-light">Placa do Veículo entrando: </p> <input type="text" th:name="placa" id="placa" placeholder="Placa"/>
+			 <br/>
+        <br/>
+			  <input type="submit" class="btn btn-warning" value="Registrar"/> 
 		</form>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script> 
-    function toggleTheme() {
-    	const body = document.body;
-    	body.classList.toggle('dark-theme');
-    }
+  
     </script>
     
 	</body>

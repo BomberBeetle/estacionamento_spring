@@ -13,14 +13,21 @@
             </div>
         </nav>
     </header>
-    <h1> Cadastro de Veículos </h1>
+     <div class="container" alignt="center">
+     
+    <br/>
+            <h1><p class="text-light">Cadastro Veículo</p></h1>
+		
 		<form th:object=${veiculo} th:action="@{/post_create_veiculo}" method="post">
 		   <div class="mb-3">
            <p>
 			<label for="placa" class="form-label">Placa</label>
 			<input th:field="*{placa}" type="text" id="placa" placeholder="Placa" aria-describedby="placaHelp"/>
-			<div id="emailHelp" class="form-text"> Não compartilharemos a sua placa com ninguém.
-            </div>
+				<div class="row">
+    		<div class="alert alert-danger col-md-4 col-md-offset-4">
+			 Nunca compartilharemos suas informações com ninguém!
+    		</div>
+			</div>
             </p>
 			</div>
             
