@@ -18,7 +18,7 @@
     <br/>
             <h1><p class="text-light">Cadastro Veículo</p></h1>
 		
-		<form th:object=${veiculo} th:action="@{/post_create_veiculo}" method="post">
+		<form th:object="${veiculo}" th:action="@{/post_create_veiculo}" method="post">
 		   <div class="mb-3">
            <p>
 			<label for="placa" class="form-label">Placa</label>
@@ -46,9 +46,9 @@
 			<select th:field="*{tipo}"  id="tipo">
 				<option th:value="CARRO">Carro</option>
 				<option th:value="MOTO">Moto</option>
-				<option th:value="CAMINHAO">Caminhão</option>
-                </p>
+				<option th:value="CAMINHAO">Caminhão</option> 
 			</select>
+			</p>
             <div class="text-center">
 			<input type="submit"  class="btn btn-warning" value="Registrar"/>
 			<input type="hidden" th:value="${entry_event}" th:name="entry_event">
@@ -56,6 +56,7 @@
             </div>
 			</div>
 		</form>
+	</div>
 	</body>
     
     <style>

@@ -12,36 +12,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 public class Usuario {
 	
-	String nome;
+	private String nome;
 	
 	@Column(unique=true)
-	String cpf;
+	private String cpf;
 	
 	@Column(unique=true)
-	String email;
+	private String email;
 	
-	String senha;
+	private String senha;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	public Integer id;
 	
 	@Enumerated(EnumType.STRING)
-	TipoUsuario tipo;
+	private TipoUsuario tipo;
 
 	@OneToMany
-	List<Servico> servicos;
+	private List<Servico> servicos;
 
 	@OneToMany
-	List<Veiculo> veiculos;
+	private List<Veiculo> veiculos;
 
 	public String getNome() {
 		return nome;

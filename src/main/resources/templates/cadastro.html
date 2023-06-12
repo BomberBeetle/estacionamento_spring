@@ -1,102 +1,126 @@
 <!DOCTYPE html>
 <html>
-<head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>JaValet</title>
-    <!-- Inclua as bibliotecas CSS do Bootstrap -->    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></head>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JaValet</title>
+	<!-- Inclua as bibliotecas CSS do Bootstrap -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
 
 <!-- Incluindo as bibliotecas JS do Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+	integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+	crossorigin="anonymous"></script>
 
 <body>
-<header>
+	<header>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-faded estacionamento-navbar" style="background-color: #ffc52b; border-color: #000;">
-            <div class="container">
-          
-                <a class="navbar-brand " href="/">JaValet</a>
-            </div>
-        </nav>
-    </header>
-    <br/>
-    <br/>
-    <div class="container">
-     <form>
-<div class="mb-3">
-    <p>
-    <label for="InputNome1" class="form-label">Nome</label>
-    <input type="text"   class="form-control" id="InputNome1">   
-    </p>
-    </div>
-  </div>
-  <div class="container">
-  <div class="mb-3">
-    <p>
-    <label for="InputCPF1" class="form-label">CPF</label>
-    <input type="text"  class="form-control" id="InputCPF1"> 
-    </p>
-    </div>
-  </div>
-  <div class="container">
-  <div class="mb-3">
-    <p>
-    <label for="InputEmail1" class="form-label">E-mail</label>
-    <input type="email"  class="form-control" id="InputEmail1" aria-describedby="emailHelp">
-    <div class="alert alert-danger col-md-4 col-md-offset-4">
-			 Nunca compartilharemos suas informações com ninguém!
-    		</div>
-    </p>
-    </div>
-  </div>
-  <div class="container">
-  <div class="mb-3">
-  <p>
-    <label for="InputPwd1" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="InputPwd1">
-    </p>
-  </div>
-  <div class="container">
-  <div class="mb-3 form-check">
-  <p>
-    <input type="checkbox" class="form-check-input" id="Check1">
-    <label class="form-check-label" for="Check1">Concordo com os Termos de Uso e Serviço </label>
-    </p>
-  </div>
-  <div>
-  <div class="container">
-  <div class="text-center">
-  <button type="submit"  class="btn btn-warning me-md-2">Enviar</button>
-  </div>
-  </div>
-</form>
+		<nav class="navbar navbar-expand-lg navbar-light bg-faded estacionamento-navbar"
+			style="background-color: #ffc52b; border-color: #000;">
+			<div class="container">
 
-<style>
-body {
-  background-color: #6b6b69;
-}
+				<a class="navbar-brand " href="/">JaValet</a>
+			</div>
+		</nav>
+	</header>
+	<br />
+	<br />	
+	<form th:object="${user}" th:action=@{/post_cadastro_cliente} method="post">
+	<div class="container">
+			<div class="mb-3">
+				<p>
+					<label for="InputNome1" class="form-label">Nome</label>
+					<input type="text" th:field="*{nome}" class="form-control" id="InputNome1" />
+				</p>
+			</div>
+	</div>
+	<div class="container">
+		<div class="mb-3">
+			<p>
+				<label for="InputCPF1" class="form-label">CPF</label>
+				<input type="text" th:field="*{cpf}" class="form-control" id="InputCPF1" />
 
-button {
-  background-color: #E6EC03;
-  color: #03ECDD;
-  text-align: center;
-  font-family: verdana;
-  font-size: 16px;
-  text-align: center;
-  
-}
+			</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="mb-3">
+			<p>
+				<label for="InputEmail1" class="form-label">E-mail</label>
+				<input type="email" th:field="*{email}" class="form-control" id="InputEmail1" />
 
-.form-control, .form-label {
-  color: white;
-  font-family: verdana;
-  font-size: 20px;
-}
+			<div class="alert alert-danger col-md-4 col-md-offset-4">
+				Nunca compartilharemos suas informações com ninguém!
+			</div>
+			</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="mb-3">
+			<p>
+				<label for="senha" class="form-label">Senha</label>
+				<input type="password" th:field="*{senha}" class="form-control" id="senha" />
+	
+			</p>
+		</div>
+		<div class="container">
+			<div class="mb-3 form-check">
+				<p>
+					<input type="checkbox" class="form-check-input" id="Check1" />
+					<label class="form-check-label" for="Check1">Concordo com os Termos de Uso e
+						Serviço </label>
+				</p>
+			</div>
+			<div>
+				<div class="container">
+					<div class="text-center">
+						<button type="submit" class="btn btn-warning me-md-2">Enviar</button>
+					</div>
+				</div>
+				<input type="hidden" th:field="*{tipo}" class="form-control" id="tipo" />
+			</div>
+			</form>
 
-.form-text{
-color: white;
-}
-.form-check-input, .form-check-label{
- color: white;
- }
-</style>
+				<style>
+					body {
+						background-color: #6b6b69;
+					}
+
+					button {
+						background-color: #E6EC03;
+						color: #03ECDD;
+						text-align: center;
+						font-family: verdana;
+						font-size: 16px;
+						text-align: center;
+
+					}
+
+					.form-control,
+					.form-label {
+						color: white;
+						font-family: verdana;
+						font-size: 20px;
+					}
+
+					.form-text {
+						color: white;
+					}
+
+					.form-check-input,
+					.form-check-label {
+						color: white;
+					}
+
+				</style>
 </body>
+
 </html>

@@ -38,7 +38,7 @@ public class EntradaController{
 
 
 		@PostMapping("/post_create_veiculo")
-	public String postCreateVeiculo(@CookieValue Integer estacionamento_id, @CookieValue Integer usuario_id, @ModelAttribute("veiculo") @Valid Veiculo veiculo, @RequestParam(value = "entry_event") String entryEvent, BindingResult result, Model model){
+	public String postCreateVeiculo(@CookieValue(required = false) Integer estacionamento_id, @CookieValue Integer usuario_id, @ModelAttribute("veiculo") @Valid Veiculo veiculo, @RequestParam(value = "entry_event") String entryEvent, BindingResult result, Model model){
 		Usuario user = usuarioController.findById(usuario_id).orElseThrow();
 		if(result.hasErrors()){
 			return "create_veiculo";

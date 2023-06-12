@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.javalet.estacionamento.model.Usuario;
 import com.javalet.estacionamento.model.repositories.UsuarioRepository;
@@ -21,6 +20,10 @@ public class UsuarioController{
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
+
+	public Usuario save(Usuario u){
+		return usuarioRepository.save(u);
+	}
 
 	public Optional<Usuario> findById(Integer id){
 		return usuarioRepository.findById(id);

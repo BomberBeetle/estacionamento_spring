@@ -17,18 +17,24 @@ public class IndexController{
 	UsuarioController usuarioController;
 
 	@GetMapping("/")
-	public ModelAndView index(@CookieValue Integer usuario_id){
+	public ModelAndView index(@CookieValue(required = false) Integer usuario_id){
 		ModelAndView model = new ModelAndView();
 
-		Optional<Usuario> user = usuarioController.findById(usuario_id);
+		
 
-		if(user.isPresent()){
-			model.addObject("usuario", user.get());
+		if(usuario_id != null){
+			Optional<Usuario> user = usuarioController.findById(usuario_id);
+			System.out.println(user.get().getId_usuario());
+			if(user.isPresent()){
+				model.addObject("usuario", user.get());
+			}
+			else{
+				model.addObject("usuario", new Usuario());
+			}
 		}
 		else{
 			model.addObject("usuario", new Usuario());
 		}
-
 		model.setViewName("index");
 
 		return model;

@@ -58,16 +58,16 @@
 			<li class="nav-item" th:if="${usuario.id == null}"> 
                             <a class="nav-link" href="/cadastro">Cadastrar Conta</a>
                         </li>
-			<li class="nav-item" th:if="${usuario.tipo.name() == 'PORTEIRO'}">
+			<li class="nav-item" th:if="${usuario.tipo != null?usuario.tipo.name() == 'PORTEIRO':false}">
                             <a class="nav-link" href="/entrada">Entrada de veículos</a>
                         </li>
-			<li class="nav-item" th:if="${usuario.tipo.name() == 'PORTEIRO'}">
+			<li class="nav-item" th:if="${usuario.tipo  != null?usuario.tipo.name() == 'PORTEIRO':false}">
                             <a class="nav-link" href="/saida">Saída de veículos</a>
                         </li>
-			<li class="nav-item" th:if="${usuario.tipo.name() == 'DIRETOR'}">
+			<li class="nav-item" th:if="${usuario.tipo  != null?usuario.tipo.name() == 'DIRETOR':false}">
                             <a class="nav-link" href="/gerenciar_taxas">Gerenciar Taxas</a>
                         </li>
-			<li class="nav-item" th:if="${usuario.tipo.name() == 'CLIENTE'}">
+			<li class="nav-item" th:if="${usuario.tipo  != null?usuario.tipo.name() == 'CLIENTE':false}">
                             <a class="nav-link" href="/registrar_servico">Agendar Serviço</a>
                         </li>
                     </ul>
